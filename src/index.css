@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,288 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* author CSS */
+:root {
+  --bg-color: #F6F6EF;
+  --post-bg-color: #FFFFFF;
+  --orange-accent: #FF6600;
+  --posttitletextcolor: #2e2828;
+  --secondary-bg-color: #f8f8f8;
+  --secondary-text-color: #878A8C;
+  --border-color: rgb(233, 233, 233);
+  --threadline-color: #e2e0e0;
+  
+  border-radius: 4px;
+  color: var(--posttitletextcolor);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-bg-color);
+}
+
+.border {
+  border: 1px solid var(--border-color);
+}
+
+.editor {
+  width: 100%;
+  border: none;
+  padding: 8px 15px;
+}
+
+button {
+  border: none;
+  margin-left: auto;
+  padding: 6px 20px;
+  border-radius: 4px;
+}
+
+.primary-btn {
+  color: white;
+  background-color: var(--orange-accent);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 48px);
+  background-color: var(--bg-color);
+}
+
+.main {
+  width: 640px;
+  overflow: auto;
+}
+
+.nav {
+  height: 48px;
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+  border-bottom: 1px solid var(--orange-accent);
+}
+
+.sidebar {
+  width: 312px;
+  margin-left: 24px;
+}
+
+.post-metadata {
+  font-size: 12px;
+  color: #979A9C;
+  margin-bottom: 8px;
+}
+
+.post-bottom {
+  display: flex;
+}
+
+.post-bottom > *, .post-bottom a {
+  font-size: 12px;
+  color: var(--secondary-text-color);
+  text-decoration: none;
+}
+
+.sort-comment-dropdown {
+  padding: 8px 0;
+  margin: 16px 0 0 40px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--secondary-text-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.comments {
+  margin-left: -40px;
+  padding-right: 30px;
+}
+
+.comment-container {
+  position: relative;
+  /* width: calc(100% + 20px); */
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.comment-container-outer {
+  padding: 0 0 0 40px;
+}
+
+.comment-container-inner {
+  padding: 0 0 0 20px;
+}
+
+.threadline-container {
+  top: 32px;
+  left: 0;
+  width: 15px;
+  position: absolute;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.threadline-container-outer {
+  left: 12px;
+}
+
+.threadline-container-inner {
+  left: -6px;
+}
+
+.threadline-container:hover .threadline {
+  border-left: 2px solid blue;
+}
+
+.comment-content {
+  /* margin-left: 20px; */
+  padding-top: 8px;
+}
+
+.comment-body {
+  margin-top: 8px;
+}
+
+.threadline {
+  border-left: 2px solid var(--threadline-color);
+  height: 100%;
+}
+
+.widget,
+.post {
+  border-radius: 4px;
+  background-color: var(--post-bg-color);
+}
+
+.post {
+  padding: 8px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.postlist-entry {
+  padding-left: 48px;
+}
+
+.like-count {
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  display: flex;
+  padding: 8px 0;
+  font-size: 12px;
+  position: absolute;
+  align-items : center;
+  flex-direction: column;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.post-body {
+  margin: 16px 0 8px;
+}
+
+.post-bottom div {
+  padding: 6px 4px;
+  border-radius: 3px;
+  margin: 0 6px 0 -4px;
+}
+
+.post-bottom div:hover {
+  background-color: var(--secondary-bg-color);
+}
+
+.widget {
+  margin-bottom: 16px;
+}
+
+.widget-heading {
+  height: 46px;
+  display: flex;
+  color: white;
+  padding: 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 12px;
+  align-items: center;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  border-radius: 3px 3px 0 0;
+  background-color: var(--orange-accent);
+}
+
+.widget-content {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 20px 24px;
+  }
 }
