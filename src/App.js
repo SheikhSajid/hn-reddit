@@ -2,18 +2,11 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Post from './Components/PostsList/Post';
-import dummyPosts from "./dummyTopPosts";
-
-// function useTopPosts(params) {
-//   const [topPosts, setTopPosts] = useState([]);
-
-
-// }
-
+import { useTopPosts } from './utils/getTopPosts';
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState(dummyPosts || []);
+  const [posts, fetchPosts] = useTopPosts(5);
 
   return (
     <div className="App">

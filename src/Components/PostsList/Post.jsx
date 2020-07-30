@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import distanceInWordsToNow from 'date-fns/formatDistanceToNow';
 
-export default ({ post }) => {
+export default memo(({ post }) => {
   const { by, descendants, id, score, time, title, url } = post;
   const timestamp = distanceInWordsToNow(new Date(time * 1000), { addSuffix: true });
-  
+
   return (
     <div className="post postlist-entry">
       <div className="like-count bg-secondary">
@@ -38,4 +38,4 @@ export default ({ post }) => {
       </div>
     </div>
   )
-}
+});
