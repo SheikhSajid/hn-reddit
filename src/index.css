@@ -48,7 +48,8 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
+  font-family: 'IBM Plex Sans', Arial, sans-serif;;
 }
 ol, ul {
 	list-style: none;
@@ -254,6 +255,17 @@ button {
 
 .post-body {
   margin: 16px 0 8px;
+}
+
+.post-body,
+.comment-body {
+  font-family: 'Noto Sans', Arial, sans-serif;
+  font-size: 14px;
+}
+
+.post-body a,
+.comment-body a {
+  font-size: 12px;
 }
 
 .post-bottom div {
