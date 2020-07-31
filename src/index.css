@@ -54,7 +54,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
-  font-family: 'IBM Plex Sans', Arial, sans-serif;;
+  font-family: 'IBM Plex Sans', Arial, sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -271,6 +271,11 @@ button {
 .post-body a,
 .comment-body a {
   font-size: 12px;
+}
+
+.post-body p {
+  line-height: 21px;
+  padding: .8em 0 .25em;
 }
 
 .post-bottom div {

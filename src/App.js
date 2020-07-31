@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Post from './Components/PostsList/Post';
 import { useTopPosts } from './utils/getTopPosts';
+import PostList from './Components/PostsList/PostList';
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const [posts, fetchPosts] = useTopPosts(5);
+  const [posts, loading, fetchPosts] = useTopPosts(10);
 
   return (
     <div className="App">
-      {loading && <img src={logo} className="App-logo" alt="logo" />}
-      {!loading && posts.map(post => <Post key={post.id} post={post} />)}
+      <PostList posts={posts} fetchPosts={fetchPosts} />
     </div>
   );
 }

@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 // import dummyPosts from '../dummyTopPosts';
+// import dummyPostIds from '../dummyTopPostIds';
 
 let postsFetchedSoFar = 0;
 
 export function useTopPosts(noOfPostsToFetch) {
   const [topPosts, setTopPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const postIds = useRef([])
 
@@ -19,12 +21,15 @@ export function useTopPosts(noOfPostsToFetch) {
         fetchPostContent(noOfPostsToFetch);
       });
       
-    // postIds.current = dummyPosts;
+    // postIds.current = dummyPostIds;
     // setTopPosts(dummyPosts);
+    // postsFetchedSoFar += dummyPosts.length;
+    // setLoading(false);
   }, []);
   
-  function fetchPostContent(noOfPostsToFetch, startIndex) {
-    startIndex = (startIndex === undefined) ? postsFetchedSoFar : 0;
+  async function fetchPostContent(noOfPostsToFetch, startIndex) {
+    setLoading(true);
+    startIndex = (startIndex === undefined) ? postsFetchedSoFar : startIndex;
     const reqs = [];
     
     for (let i = startIndex; i < startIndex + noOfPostsToFetch; i++) {
@@ -34,17 +39,16 @@ export function useTopPosts(noOfPostsToFetch) {
       reqs.push(req);
     }
 
-    Promise.all(reqs)
-      .then(responses => {
-        const jsonPromises = responses.map(res => res.json());
-
-        Promise.all(jsonPromises)
-          .then(posts => {
-            setTopPosts([...topPosts, ...posts]);
-            postsFetchedSoFar += noOfPostsToFetch;
-          });
-      });
+    const responses = await Promise.all(reqs);
+    const jsonPromises = responses.map(res => res.json());
+    const posts = await Promise.all(jsonPromises);
+    setLoading(false);
+    
+    setTopPosts([...topPosts, ...posts]);
+    postsFetchedSoFar += noOfPostsToFetch;
+    
+    return posts;
   }
 
-  return [topPosts, fetchPostContent];
+  return [topPosts, loading, fetchPostContent];
 }
