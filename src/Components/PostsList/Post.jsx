@@ -4,6 +4,11 @@ import distanceInWordsToNow from 'date-fns/formatDistanceToNow';
 export default memo(({ post }) => {
   const { by, descendants, id, score, time, title, url } = post;
   const timestamp = distanceInWordsToNow(new Date(time * 1000), { addSuffix: true });
+  
+
+  let urlShortened =  url.startsWith('https://') ? url.slice(8, 33) : url.slice(0, 28);
+  urlShortened =  urlShortened.startsWith('http://') ? urlShortened.slice(7, 33) : urlShortened.slice(0, 28);
+  urlShortened = urlShortened.startsWith('www.') ? urlShortened.slice(4) : urlShortened.slice(0); 
 
   return (
     <div className="post postlist-entry">
@@ -18,7 +23,7 @@ export default memo(({ post }) => {
         </div>
         <h2 className="post-title">{title}</h2>
         <div className="post-body">
-          <a href={url}>{url}</a>
+          <a href={url}>{urlShortened + '...'}</a>
         </div>
 
         <div className="post-bottom">
