@@ -29,13 +29,17 @@ export default memo(({ post }) => {
   if (url) {
     urlShortened = url.startsWith('https://')
       ? url.slice(8, 33)
-      : url.slice(0, 28);
+      : url.slice(0, 25);
     urlShortened = urlShortened.startsWith('http://')
-      ? urlShortened.slice(7, 33)
-      : urlShortened.slice(0, 28);
+      ? urlShortened.slice(7, 32)
+      : urlShortened.slice(0, 25);
     urlShortened = urlShortened.startsWith('www.')
       ? urlShortened.slice(4)
       : urlShortened.slice(0);
+
+    if (urlShortened.slice(-1) === '/')
+      urlShortened = urlShortened.slice(0, -1);
+    if (url.length > 33) urlShortened += '...';
   }
 
   return (
@@ -53,7 +57,7 @@ export default memo(({ post }) => {
         <div className="post-body">
           {url && (
             <a target="_blank" rel="noopener noreferrer" href={url}>
-              {urlShortened + '...'}
+              {urlShortened}
             </a>
           )}
           {text && <p dangerouslySetInnerHTML={{ __html: textShortened }}></p>}
