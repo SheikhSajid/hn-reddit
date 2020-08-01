@@ -81,6 +81,7 @@ table {
   --secondary-bg-color: #f8f8f8;
   --secondary-text-color: #878A8C;
   --border-color: rgb(233, 233, 233);
+  --border-color-highlighted: rgb(180, 180, 180);
   --threadline-color: #e2e0e0;
   
   border-radius: 4px;
@@ -235,6 +236,10 @@ button {
 
 .postlist-entry {
   padding-left: 48px;
+}
+
+.postlist-entry:hover {
+  border: 1px solid var(--border-color-highlighted);
 }
 
 .like-count {
