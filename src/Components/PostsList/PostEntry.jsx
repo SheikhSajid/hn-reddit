@@ -23,7 +23,7 @@ export default memo(({ post, innerRef }) => {
     urlShortened = url.startsWith('https://') ? url.slice(8, 33) : url.slice(0, 28);
     urlShortened = urlShortened.startsWith('http://') ? urlShortened.slice(7, 33) 
                                                        : urlShortened.slice(0, 28);
-    urlShortened = urlShortened.startsWith('www.') ? urlShortened.slice(4)                                                 : urlShortened.slice(0); 
+    urlShortened = urlShortened.startsWith('www.') ? urlShortened.slice(4) : urlShortened.slice(0); 
   }
 
 

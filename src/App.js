@@ -5,7 +5,7 @@ import { useTopPosts } from './utils/getTopPosts';
 import PostList from './Components/PostsList/PostList';
 
 function App() {
-  const [posts, loading, fetchPosts] = useTopPosts(10);
+  const [posts, loading, fetchPosts] = useTopPosts(30);
 
   return (
     <div className="App">
