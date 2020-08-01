@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import distanceInWordsToNow from 'date-fns/formatDistanceToNow';
 
 export default memo(({ post, innerRef }) => {
@@ -6,18 +6,24 @@ export default memo(({ post, innerRef }) => {
   const timestamp = distanceInWordsToNow(new Date(time * 1000), { addSuffix: true });
   let urlShortened = '';
   let textShortened = '';
+  const hnUrl = `https://news.ycombinator.com/item?id=${id}`;
 
   if (text && text.length > 900) {
     textShortened = text.slice(0, 900) + '...';
     textShortened += `<br />
                       <a target="_blank" 
                          rel="noopener noreferrer"
-                         href='https://news.ycombinator.com/item?id=${id}'
+                         href='${hnUrl}'
                       >
                         Read more
-                      </a>`
+                      </a>`;
 
   }
+
+  const openInNewTab = useCallback(() => {
+    var win = window.open(hnUrl, '_blank');
+    win.focus();
+  }, [hnUrl]);
 
   if (url) {
     urlShortened = url.startsWith('https://') ? url.slice(8, 33) : url.slice(0, 28);
@@ -28,7 +34,7 @@ export default memo(({ post, innerRef }) => {
 
 
   return (
-    <div ref={innerRef} className="post postlist-entry">
+    <div onClick={openInNewTab} className="post postlist-entry">
       <div className="like-count bg-secondary">
         <div>{score}</div>
         <div>Likes</div>
@@ -47,7 +53,7 @@ export default memo(({ post, innerRef }) => {
         <div className="post-bottom">
           <div>
             <a 
-              href={`https://news.ycombinator.com/item?id=${id}`} 
+              href={hnUrl} 
               target="_blank" 
               rel="noopener noreferrer"
             >
