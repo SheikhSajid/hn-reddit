@@ -1,6 +1,12 @@
 import React, { memo, useCallback } from 'react';
 import distanceInWordsToNow from 'date-fns/formatDistanceToNow';
 
+function openInNewTab(event, url) {
+  event.stopPropagation();
+  var win = window.open(url, '_blank');
+  win.focus();
+}
+
 export default memo(({ post }) => {
   const { by, descendants, id, score, time, title, text, url } = post;
   const timestamp = distanceInWordsToNow(new Date(time * 1000), {
@@ -21,10 +27,25 @@ export default memo(({ post }) => {
                       </a>`;
   }
 
-  const openInNewTab = useCallback(() => {
-    var win = window.open(hnUrl, '_blank');
-    win.focus();
-  }, [hnUrl]);
+  const openHNPageInNewTab = useCallback(
+    (event) => openInNewTab(event, hnUrl),
+    [hnUrl]
+  );
+
+  const openExtLinkInNewTab = useCallback((event) => openInNewTab(event, url), [
+    url,
+  ]);
+
+  const copyToClipboard = useCallback(
+    (event) => {
+      event.stopPropagation();
+      navigator.clipboard
+        .writeText(url)
+        .then(() => alert(`URL copied: ${url}`))
+        .catch((err) => console.error(err));
+    },
+    [url]
+  );
 
   if (url) {
     urlShortened = url.startsWith('https://')
@@ -43,7 +64,7 @@ export default memo(({ post }) => {
   }
 
   return (
-    <div onClick={openInNewTab} className="post postlist-entry">
+    <div onClick={openHNPageInNewTab} className="post postlist-entry">
       <div className="like-count bg-secondary">
         <div>{score}</div>
         <div>Likes</div>
@@ -56,20 +77,21 @@ export default memo(({ post }) => {
         <h2 className="post-title">{title}</h2>
         <div className="post-body">
           {url && (
-            <a target="_blank" rel="noopener noreferrer" href={url}>
+            <p onClick={openExtLinkInNewTab} className="url-shortened">
               {urlShortened}
-            </a>
+            </p>
           )}
-          {text && <p dangerouslySetInnerHTML={{ __html: textShortened }}></p>}
+          {text && (
+            <div
+              className="post-text"
+              dangerouslySetInnerHTML={{ __html: textShortened }}
+            ></div>
+          )}
         </div>
 
         <div className="post-bottom">
-          <div>
-            <a href={hnUrl} target="_blank" rel="noopener noreferrer">
-              {descendants} Comments
-            </a>
-          </div>
-          <div>Copy Link</div>
+          <div>{descendants} Comments</div>
+          <div onClick={copyToClipboard}>Copy Link</div>
           <div>Save</div>
           <div>Hide</div>
         </div>

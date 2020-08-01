@@ -21,24 +21,92 @@ code {
    v2.0 | 20110126
    License: none (public domain)
 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
   vertical-align: baseline;
   text-decoration: none;
 }
@@ -48,42 +116,55 @@ a:hover {
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
   line-height: 1;
   font-family: 'IBM Plex Sans', Arial, sans-serif;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* author CSS */
 :root {
-  --bg-color: #F6F6EF;
-  --post-bg-color: #FFFFFF;
-  --orange-accent: #FF6600;
+  --bg-color: #f6f6ef;
+  --post-bg-color: #ffffff;
+  --orange-accent: #ff6600;
   --posttitletextcolor: #2e2828;
   --secondary-bg-color: #f8f8f8;
-  --secondary-text-color: #878A8C;
+  --secondary-text-color: #878a8c;
   --border-color: rgb(233, 233, 233);
   --border-color-highlighted: rgb(180, 180, 180);
   --threadline-color: #e2e0e0;
-  
+
   border-radius: 4px;
   color: var(--posttitletextcolor);
 }
@@ -141,7 +222,7 @@ button {
 
 .post-metadata {
   font-size: 12px;
-  color: #979A9C;
+  color: #979a9c;
   margin-bottom: 8px;
 }
 
@@ -149,7 +230,8 @@ button {
   display: flex;
 }
 
-.post-bottom > *, .post-bottom a {
+.post-bottom > *,
+.post-bottom a {
   font-size: 12px;
   color: var(--secondary-text-color);
   text-decoration: none;
@@ -251,7 +333,7 @@ button {
   padding: 8px 0;
   font-size: 12px;
   position: absolute;
-  align-items : center;
+  align-items: center;
   flex-direction: column;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
@@ -273,14 +355,27 @@ button {
   font-size: 14px;
 }
 
-.post-body a,
+.post-body .url-shortened,
 .comment-body a {
   font-size: 12px;
 }
 
-.post-body p {
+.post-body .url-shortened {
+  color: #0064bd;
+  display: inline;
+}
+
+.post-body .url-shortened:hover {
+  color: #0095ff;
+  text-decoration: underline;
+}
+
+.post-text {
   line-height: 21px;
-  padding: .8em 0 .25em;
+}
+
+.post-text p {
+  padding: 0.8em 0 0.25em;
 }
 
 .post-bottom div {
@@ -306,7 +401,7 @@ button {
   font-weight: 700;
   line-height: 12px;
   align-items: center;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   border-radius: 3px 3px 0 0;
   background-color: var(--orange-accent);
