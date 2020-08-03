@@ -280,7 +280,7 @@ button {
 }
 
 .threadline-container:hover .threadline {
-  border-left: 2px solid blue;
+  border-left: 2px solid #cc3600;
 }
 
 .comment-content {
