@@ -24,7 +24,7 @@ export default ({ comment }) => {
           dangerouslySetInnerHTML={{ __html: text }}
         ></div>
 
-        {children.length && <Comments comments={children} />}
+        {!!children.length && <Comments comments={children} />}
       </div>
     </div>
   );

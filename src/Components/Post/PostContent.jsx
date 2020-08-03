@@ -61,7 +61,7 @@ export default ({ post }) => {
 
   return (
     <Fragment>
-      <div className="like-count bg-secondary">
+      <div className="like-count">
         <div>{score}</div>
         <div>Likes</div>
       </div>

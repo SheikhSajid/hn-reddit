@@ -205,7 +205,6 @@ button {
 .main {
   width: 640px;
   overflow: auto;
-  position: relative;
 }
 
 .nav {
@@ -247,11 +246,6 @@ button {
   border-bottom: 1px solid var(--border-color);
 }
 
-.comments {
-  margin-left: -40px;
-  padding-right: 30px;
-}
-
 .comment-container {
   position: relative;
   /* width: calc(100% + 20px); */
@@ -260,7 +254,7 @@ button {
 }
 
 .comment-container-outer {
-  padding: 0 0 0 40px;
+  padding: 0 0 0 20px;
 }
 
 .comment-container-inner {
@@ -277,9 +271,9 @@ button {
   justify-content: center;
 }
 
-.threadline-container-outer {
+/* .threadline-container-outer {
   left: 12px;
-}
+} */
 
 .threadline-container-inner {
   left: -6px;
@@ -371,11 +365,13 @@ button {
   text-decoration: underline;
 }
 
-.post-text {
+.post-text,
+.comment-body {
   line-height: 21px;
 }
 
-.post-text p {
+.post-text p,
+.comment-body p {
   padding: 0.8em 0 0.25em;
 }
 
