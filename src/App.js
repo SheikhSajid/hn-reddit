@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import FullPost from './Components/Post/FullPost';
-import './App.css';
+// import './App.css';
 import { useTopPosts } from './utils/getTopPosts';
 import PostList from './Components/PostsList/PostList';
 
-function App() {
-  const [posts, loading, fetchPosts] = useTopPosts(30);
+function App({ topPostsFromServer }) {
+  let [posts, loading, fetchPosts] = useTopPosts(30);
   const [displayedPost, setDisplayedPost] = useState(null);
 
   const clearDisplayedPost = useCallback(() => {
@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       {!displayedPost && (
         <PostList
-          posts={posts}
+          posts={topPostsFromServer || posts}
           fetchPosts={fetchPosts}
           setDisplayedPost={setDisplayedPost}
         />

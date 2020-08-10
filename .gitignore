@@ -24,3 +24,6 @@ yarn-error.log*
 
 dummyTopPosts.js
 dummyTopPostIds.js
+
+server-build
+public/index.html
