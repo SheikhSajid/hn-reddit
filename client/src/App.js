@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import FullPost from './Components/Post/FullPost';
-// import './App.css';
+import './App.css';
 import { useTopPosts } from './utils/getTopPosts';
 import PostList from './Components/PostsList/PostList';
 

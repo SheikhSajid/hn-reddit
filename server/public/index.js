@@ -5,8 +5,10 @@ import React from 'react';
 import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 
-import App from '../App';
-import cron from 'node-cron';
+import 'ignore-styles'; // Ignore CSS imports in components
+
+import App from '../src/App';
+// import cron from 'node-cron';
 import { getTopPosts } from './getHNData';
 
 const PORT = process.env.PORT || 3006;

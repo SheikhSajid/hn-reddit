@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: './src/server/index.js',
+  entry: './src/index.js',
 
   target: 'node',
 
@@ -26,9 +26,4 @@ module.exports = {
       // },
     ],
   },
-  plugins: [
-    new webpack.IgnorePlugin({
-      resourceRegExp: /.css$/i,
-    }),
-  ],
 };
