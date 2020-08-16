@@ -239,7 +239,7 @@ button {
 
 .sort-comment-dropdown {
   padding: 8px 0;
-  margin: 16px 0 0 40px;
+  margin-top: 16px;
   font-size: 12px;
   text-transform: uppercase;
   color: var(--secondary-text-color);
