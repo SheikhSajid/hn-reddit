@@ -1,15 +1,13 @@
 import React, { Fragment } from 'react';
-import Comments from './Comments';
+import CommentsContainer from './CommentsContainer';
 import PostContent from './PostContent';
-import { usePostComments } from '../../utils/getComments';
 
 export default ({ post, clearDisplayedPost }) => {
-  const [comments, loading] = usePostComments(post.id);
-
   return (
     <Fragment>
       <button
         style={{
+          // TODO: Move inline styles to global CSS
           marginBottom: '-2px',
           backgroundColor: 'white',
         }}
@@ -21,6 +19,7 @@ export default ({ post, clearDisplayedPost }) => {
       <div
         style={{
           width: '100%',
+          // TODO: Move inline styles to global CSS
           // height: '100%',
           // backgroundColor: '#F6F6EF',
           // position: 'absolute',
@@ -31,9 +30,7 @@ export default ({ post, clearDisplayedPost }) => {
         className="post post-display"
       >
         <PostContent post={post} />
-        {/* Comments */}
-        {!loading && <Comments comments={comments} />}
-        {loading && <h3>Loading comments...</h3>}
+        <CommentsContainer postId={post.id} />
       </div>
     </Fragment>
   );
