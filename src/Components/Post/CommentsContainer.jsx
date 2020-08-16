@@ -1,13 +1,18 @@
 import React, { Fragment } from 'react';
 import Comments from './Comments';
 import { usePostComments } from '../../utils/getComments';
+import SortDropdown from './SortDropdown';
 
 export default ({ postId }) => {
   const [comments, loading] = usePostComments(postId);
 
   return (
     <Fragment>
-      {!loading && <div className="sort-comment-dropdown">Sort By</div>}
+      {!loading && (
+        <SortDropdown
+          sortComments={(option) => console.log('selected option: ' + option)}
+        />
+      )}
       {!loading && (
         <Comments style={{ marginLeft: '-20px' }} comments={comments} />
       )}

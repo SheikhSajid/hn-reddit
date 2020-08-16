@@ -409,6 +409,43 @@ button {
   border: 1px solid var(--border-color);
 }
 
+.dropdown-container {
+  margin-left: 5px;
+  display: inline-block;
+}
+
+.dropdown-container > span {
+  color: var(--orange-accent);
+}
+
+.dropdown-menu-container {
+  display: none;
+  z-index: 10;
+  position: absolute;
+}
+
+.dropdown-menu {
+  padding: 5px 0;
+  line-height: 30px;
+  margin-top: 5px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid var(--border-color);
+}
+
+.dropdown-menu li {
+  padding: 0 5px;
+}
+
+.dropdown-menu li:hover {
+  color: white;
+  background-color: lightblue;
+}
+
+.dropdown-container:hover .dropdown-menu-container {
+  display: block;
+}
+
 @media (min-width: 640px) {
   .container {
     padding: 20px 24px;
