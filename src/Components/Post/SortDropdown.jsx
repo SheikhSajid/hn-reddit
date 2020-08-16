@@ -2,15 +2,21 @@ import React from 'react';
 import { useState } from 'react';
 import { useCallback } from 'react';
 
-const DropdownMenu = ({ clickHandler, options }) => {
+const DropdownMenu = ({ clickHandler, options, selectedOption }) => {
   return (
-    <div class="dropdown-menu-container">
-      <ul class="dropdown-menu">
-        {options.map((option) => (
-          <li key={option} onClick={() => clickHandler(option)}>
-            {option}
-          </li>
-        ))}
+    <div className="dropdown-menu-container">
+      <ul className="dropdown-menu">
+        {options.map((option) => {
+          const style =
+            option === selectedOption
+              ? { color: 'var(--orange-accent)' }
+              : undefined;
+          return (
+            <li style={style} key={option} onClick={() => clickHandler(option)}>
+              {option}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -18,11 +24,11 @@ const DropdownMenu = ({ clickHandler, options }) => {
 
 export default ({ sortComments }) => {
   const options = [
-    'Most Points',
-    'Newest',
+    // 'Most Points',
     'Default',
+    'Newest',
     'Oldest',
-    'Least Points',
+    // 'Least Points',
   ];
   const [selectedOption, setSelectedOption] = useState('Default');
 
@@ -39,7 +45,11 @@ export default ({ sortComments }) => {
       Sort By
       <div className="dropdown-container">
         <span>{selectedOption}</span>
-        <DropdownMenu clickHandler={handler} options={options} />
+        <DropdownMenu
+          clickHandler={handler}
+          options={options}
+          selectedOption={selectedOption}
+        />
       </div>
     </div>
   );
