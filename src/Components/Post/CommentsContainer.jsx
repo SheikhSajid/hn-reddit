@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Comment from './Comment';
+import Comments from './Comments';
 import { usePostComments } from '../../utils/getComments';
 
 export default ({ postId }) => {
@@ -9,12 +9,7 @@ export default ({ postId }) => {
     <Fragment>
       {!loading && <div className="sort-comment-dropdown">Sort By</div>}
       {!loading && (
-        <div className="comments">
-          {/* <div className="sort-comment-dropdown">Sort By</div> */}
-          {comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
-          ))}
-        </div>
+        <Comments style={{ marginLeft: '-20px' }} comments={comments} />
       )}
       {loading && <h1>Loading Comments...</h1>}
     </Fragment>
