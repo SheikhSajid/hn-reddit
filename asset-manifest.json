@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/sheikhsajid.github.io/hn-reddit/static/css/main.388a21bb.chunk.css",
-    "main.js": "/sheikhsajid.github.io/hn-reddit/static/js/main.7e76cf1d.chunk.js",
-    "main.js.map": "/sheikhsajid.github.io/hn-reddit/static/js/main.7e76cf1d.chunk.js.map",
-    "runtime-main.js": "/sheikhsajid.github.io/hn-reddit/static/js/runtime-main.c6df3fab.js",
-    "runtime-main.js.map": "/sheikhsajid.github.io/hn-reddit/static/js/runtime-main.c6df3fab.js.map",
-    "static/js/2.63fb354a.chunk.js": "/sheikhsajid.github.io/hn-reddit/static/js/2.63fb354a.chunk.js",
-    "static/js/2.63fb354a.chunk.js.map": "/sheikhsajid.github.io/hn-reddit/static/js/2.63fb354a.chunk.js.map",
-    "index.html": "/sheikhsajid.github.io/hn-reddit/index.html",
-    "precache-manifest.bfae1215ad4d24a4ee2f91700e786593.js": "/sheikhsajid.github.io/hn-reddit/precache-manifest.bfae1215ad4d24a4ee2f91700e786593.js",
-    "service-worker.js": "/sheikhsajid.github.io/hn-reddit/service-worker.js",
-    "static/css/main.388a21bb.chunk.css.map": "/sheikhsajid.github.io/hn-reddit/static/css/main.388a21bb.chunk.css.map",
-    "static/js/2.63fb354a.chunk.js.LICENSE.txt": "/sheikhsajid.github.io/hn-reddit/static/js/2.63fb354a.chunk.js.LICENSE.txt"
+    "main.css": "/hn-reddit/static/css/main.388a21bb.chunk.css",
+    "main.js": "/hn-reddit/static/js/main.5b96bcf3.chunk.js",
+    "main.js.map": "/hn-reddit/static/js/main.5b96bcf3.chunk.js.map",
+    "runtime-main.js": "/hn-reddit/static/js/runtime-main.9da80c95.js",
+    "runtime-main.js.map": "/hn-reddit/static/js/runtime-main.9da80c95.js.map",
+    "static/js/2.63fb354a.chunk.js": "/hn-reddit/static/js/2.63fb354a.chunk.js",
+    "static/js/2.63fb354a.chunk.js.map": "/hn-reddit/static/js/2.63fb354a.chunk.js.map",
+    "index.html": "/hn-reddit/index.html",
+    "precache-manifest.b8eddfa9ef723470c13b6aa69dd2a026.js": "/hn-reddit/precache-manifest.b8eddfa9ef723470c13b6aa69dd2a026.js",
+    "service-worker.js": "/hn-reddit/service-worker.js",
+    "static/css/main.388a21bb.chunk.css.map": "/hn-reddit/static/css/main.388a21bb.chunk.css.map",
+    "static/js/2.63fb354a.chunk.js.LICENSE.txt": "/hn-reddit/static/js/2.63fb354a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c6df3fab.js",
+    "static/js/runtime-main.9da80c95.js",
     "static/js/2.63fb354a.chunk.js",
     "static/css/main.388a21bb.chunk.css",
-    "static/js/main.7e76cf1d.chunk.js"
+    "static/js/main.5b96bcf3.chunk.js"
   ]
 }
