@@ -1,7 +1,7 @@
 {
   "name": "hn-reddit",
   "version": "0.1.0",
-  "homepage": "sheikhsajid.github.io/hn-reddit",
+  "homepage": "https://sheikhsajid.github.io/hn-reddit/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
