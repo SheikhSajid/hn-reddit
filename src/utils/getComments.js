@@ -8,7 +8,7 @@ export function usePostComments(id) {
 
   async function getComments(id) {
     try {
-      const response = await fetch(`http://hn.algolia.com/api/v1/items/${id}`);
+      const response = await fetch(`https://hn.algolia.com/api/v1/items/${id}`);
       const post = await response.json();
       setComments(post.children);
       commentsRef.current = post.children;
