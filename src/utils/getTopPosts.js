@@ -8,8 +8,8 @@ export function useTopPosts() {
   });
 
   const { data: postsArray, isFetchingMore, fetchMore } = useInfiniteQuery(
-    ['topPosts', topPostIds],
-    fetchPosts,
+    'topPosts',
+    (...args) => fetchPosts(topPostIds || [], ...args),
     {
       getFetchMore: (lastGroup, allGroups) => {
         const ret = allGroups.length < 500 ? allGroups.length : void 0;
@@ -24,7 +24,7 @@ export function useTopPosts() {
   return [posts, isFetchingMore, fetchMore];
 }
 
-async function fetchPosts(key, allPostIds, pagesFetchedSoFar = 0) {
+async function fetchPosts(allPostIds, key, pagesFetchedSoFar = 0) {
   const idsToFetch = allPostIds.slice(
     pagesFetchedSoFar * 30,
     pagesFetchedSoFar * 30 + 30
@@ -47,6 +47,7 @@ async function fetchPosts(key, allPostIds, pagesFetchedSoFar = 0) {
 }
 
 function fetchTopPostIds() {
+  console.log('posting ids');
   return fetch(
     'https://hacker-news.firebaseio.com/v0/topstories.json'
   ).then((res) => res.json());
