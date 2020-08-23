@@ -8,7 +8,7 @@ export default memo(({ posts, setDisplayedPost, fetchPosts }) => {
   return (
     <InfiniteScroll
       dataLength={posts.length}
-      next={() => fetchPosts(10)}
+      next={fetchPosts}
       hasMore={posts.length <= 500}
       loader={<h4>Loading...</h4>}
       endMessage={

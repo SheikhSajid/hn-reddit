@@ -1,56 +1,53 @@
-import { useState, useEffect, useRef } from 'react';
-// import dummyPosts from '../dummyTopPosts';
-// import dummyPostIds from '../dummyTopPostIds';
+// import { useRef } from 'react';
+import { useInfiniteQuery, useQuery } from 'react-query';
 
-let postsFetchedSoFar = 0;
-
-export function useTopPosts(noOfPostsToFetch) {
-  const [topPosts, setTopPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const postIds = useRef([]);
-
+export function useTopPosts() {
   // Fetch the IDs of the Top Stories
-  useEffect(() => {
-    fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
-      .then((res) => res.json())
-      .then((res) => {
-        postIds.current = res;
+  const { data: topPostIds } = useQuery('topPostIds', fetchTopPostIds, {
+    staleTime: 1000 * 60 * 3 /* 3 minutes */,
+  });
 
-        // Fetch the stories
-        fetchPostContent(noOfPostsToFetch);
-      });
-
-    // postIds.current = dummyPostIds;
-    // setTopPosts(dummyPosts);
-    // postsFetchedSoFar += dummyPosts.length;
-    // setLoading(false);
-  }, []);
-
-  async function fetchPostContent(noOfPostsToFetch, startIndex) {
-    setLoading(true);
-    startIndex = startIndex === undefined ? postsFetchedSoFar : startIndex;
-    const reqs = [];
-
-    for (let i = startIndex; i < startIndex + noOfPostsToFetch; i++) {
-      const id = postIds.current[i];
-
-      const req = fetch(
-        `https://hacker-news.firebaseio.com/v0/item/${id}.json`
-      );
-      reqs.push(req);
+  const { data: postsArray, isFetchingMore, fetchMore } = useInfiniteQuery(
+    ['topPosts', topPostIds],
+    fetchPosts,
+    {
+      getFetchMore: (lastGroup, allGroups) => {
+        const ret = allGroups.length < 500 ? allGroups.length : void 0;
+        return ret;
+      },
+      enabled: topPostIds, // Pause until IDs are loaded
+      staleTime: 1000 * 60 * 3 /* 3 minutes */,
     }
+  );
 
-    const responses = await Promise.all(reqs);
-    const jsonPromises = responses.map((res) => res.json());
-    const posts = await Promise.all(jsonPromises);
-    setLoading(false);
+  const posts = postsArray ? postsArray.flat() : [];
+  return [posts, isFetchingMore, fetchMore];
+}
 
-    setTopPosts([...topPosts, ...posts]);
-    postsFetchedSoFar += noOfPostsToFetch;
+async function fetchPosts(key, allPostIds, pagesFetchedSoFar = 0) {
+  const idsToFetch = allPostIds.slice(
+    pagesFetchedSoFar * 30,
+    pagesFetchedSoFar * 30 + 30
+  );
+  !pagesFetchedSoFar ?? console.log('first load!');
+  console.log('loading! :3');
 
-    return posts;
-  }
+  const reqs = [];
 
-  return [topPosts, loading, fetchPostContent];
+  idsToFetch.forEach((id) => {
+    const req = fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+    reqs.push(req);
+  });
+
+  const responses = await Promise.all(reqs);
+  const jsonPromises = responses.map((res) => res.json());
+  const posts = await Promise.all(jsonPromises);
+
+  return posts;
+}
+
+function fetchTopPostIds() {
+  return fetch(
+    'https://hacker-news.firebaseio.com/v0/topstories.json'
+  ).then((res) => res.json());
 }
