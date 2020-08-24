@@ -220,10 +220,18 @@ button {
   margin-left: 24px;
 }
 
-.post-metadata {
+.post-metadata,
+.comment-metadata {
   font-size: 12px;
   color: #979a9c;
+}
+
+.post-metadata {
   margin-bottom: 8px;
+}
+
+.comment-metadata {
+  margin-bottom: 4px;
 }
 
 .post-bottom {
@@ -292,10 +300,6 @@ button {
   padding-top: 8px;
 }
 
-.comment-body {
-  margin-top: 8px;
-}
-
 .threadline {
   border-left: 2px solid var(--threadline-color);
   height: 100%;
@@ -309,14 +313,18 @@ button {
 
 .post {
   padding: 8px;
-  cursor: pointer;
   position: relative;
   margin-bottom: 10px;
   border: 1px solid var(--border-color);
 }
 
 .postlist-entry {
+  cursor: pointer;
   padding-left: 48px;
+}
+
+.dropdown-container {
+  cursor: pointer;
 }
 
 .postlist-entry:hover {
@@ -357,14 +365,15 @@ button {
 .post-body .url-shortened,
 .comment-body a {
   font-size: 12px;
-}
-
-.post-body .url-shortened {
   color: #0064bd;
-  display: inline;
 }
 
-.post-body .url-shortened:hover {
+/* .post-body .url-shortened {
+  display: inline;
+} */
+
+.post-body .url-shortened:hover,
+.comment-body a:hover {
   color: #0095ff;
   text-decoration: underline;
 }
@@ -372,11 +381,6 @@ button {
 .post-text,
 .comment-body {
   line-height: 21px;
-}
-
-.post-text p,
-.comment-body p {
-  padding: 0.8em 0 0.25em;
 }
 
 .post-bottom div {

@@ -27,7 +27,10 @@ export default ({ comment }) => {
       )}
 
       <div className="comment-content">
-        <div onClick={() => setChildrenHidden(false)} className="post-metadata">
+        <div
+          onClick={() => setChildrenHidden(false)}
+          className="comment-metadata"
+        >
           {childrenHidden && '[+]'}
           {author} · {timestamp}
         </div>
