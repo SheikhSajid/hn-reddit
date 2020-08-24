@@ -18,7 +18,6 @@ export default ({ post, clearDisplayedPost }) => {
 
       <div
         style={{
-          width: '100%',
           // TODO: Move inline styles to global CSS
           // height: '100%',
           // backgroundColor: '#F6F6EF',
