@@ -28,13 +28,20 @@ export function usePostComments(id) {
 }
 
 async function getComments(key, id, commentsRef) {
+  const post = await fetchFullPost(id);
+  const comments = post.children;
+
+  // store the default order of comments from the server in a ref
+  if (commentsRef) commentsRef.current = comments;
+
+  return comments;
+}
+
+export async function fetchFullPost(id) {
   const response = await fetch(`https://hn.algolia.com/api/v1/items/${id}`);
   const post = await response.json();
 
-  // store the default order of comments from the server in a ref
-  if (commentsRef) commentsRef.current = post.children;
-
-  return post.children;
+  return post;
 }
 
 function sortCommentsImpl(option, comments) {
