@@ -1,12 +1,6 @@
 import React, { Fragment, useCallback } from 'react';
 import distanceInWordsToNow from 'date-fns/formatDistanceToNow';
 
-function openInNewTab(event, url) {
-  event.stopPropagation();
-  var win = window.open(url, '_blank');
-  win.focus();
-}
-
 export default ({ post }) => {
   const { by, descendants, id, score, time, title, text, url } = post;
 
@@ -28,9 +22,7 @@ export default ({ post }) => {
                       </a>`;
   }
 
-  const openExtLinkInNewTab = useCallback((event) => openInNewTab(event, url), [
-    url,
-  ]);
+  const stopBubbling = useCallback((event) => event.stopPropagation(), [url]);
 
   const copyToClipboard = useCallback(
     (event) => {
@@ -73,14 +65,12 @@ export default ({ post }) => {
         <h2 className="post-title">{title}</h2>
         <div className="post-body">
           {url && (
-            // <p onClick={openExtLinkInNewTab} className="url-shortened">
-            //   {urlShortened}
-            // </p>
             <a
               href={url}
               target="_blanks"
               rel="noopener noreferrer"
               className="url-shortened"
+              onClick={stopBubbling}
             >
               {urlShortened}
             </a>
