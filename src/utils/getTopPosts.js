@@ -29,8 +29,6 @@ async function fetchPosts(allPostIds, key, pagesFetchedSoFar = 0) {
     pagesFetchedSoFar * 30,
     pagesFetchedSoFar * 30 + 30
   );
-  !pagesFetchedSoFar ?? console.log('first load!');
-  console.log('loading! :3');
 
   const reqs = [];
 

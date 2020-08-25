@@ -73,9 +73,17 @@ export default ({ post }) => {
         <h2 className="post-title">{title}</h2>
         <div className="post-body">
           {url && (
-            <p onClick={openExtLinkInNewTab} className="url-shortened">
+            // <p onClick={openExtLinkInNewTab} className="url-shortened">
+            //   {urlShortened}
+            // </p>
+            <a
+              href={url}
+              target="_blanks"
+              rel="noopener noreferrer"
+              className="url-shortened"
+            >
               {urlShortened}
-            </p>
+            </a>
           )}
           {text && (
             <div

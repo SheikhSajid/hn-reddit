@@ -368,9 +368,9 @@ button {
   color: #0064bd;
 }
 
-/* .post-body .url-shortened {
+.url-shortened {
   display: inline;
-} */
+}
 
 .post-body .url-shortened:hover,
 .comment-body a:hover {
