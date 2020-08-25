@@ -356,6 +356,10 @@ button {
   margin: 16px 0 8px;
 }
 
+.comment-body p {
+  margin-bottom: 12px;
+}
+
 .post-body,
 .comment-body {
   font-family: 'Noto Sans', Arial, sans-serif;
