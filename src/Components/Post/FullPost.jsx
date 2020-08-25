@@ -1,9 +1,20 @@
 import React from 'react';
 import CommentsContainer from './CommentsContainer';
 import PostContent from './PostContent';
+import { useQuery } from 'react-query';
+import { fetchPost } from '../../utils/getTopPosts';
 
 export default (props) => {
-  const post = props.location.state.post;
+  const { id } = props.match.params;
+  const shouldFetch = !(props.location.state && props.location.state.post);
+
+  let { data: post, isLoading } = useQuery(['post', id], fetchPost, {
+    enabled: shouldFetch,
+    staleTime: 1000 * 60 * 3 /* 3 minutes */,
+  });
+
+  if (!shouldFetch && !post) post = props.location.state.post;
+
   return (
     <div
       style={{
@@ -17,8 +28,9 @@ export default (props) => {
       }}
       className="post post-display"
     >
-      <PostContent post={post} />
-      <CommentsContainer postId={post.id} />
+      {shouldFetch && isLoading && <h1>Loading...</h1>}
+      {post && <PostContent post={post} fetched={shouldFetch} />}
+      {post && <CommentsContainer postId={post.id} fetched={shouldFetch} />}
     </div>
   );
 };

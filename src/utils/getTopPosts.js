@@ -45,8 +45,15 @@ async function fetchPosts(allPostIds, key, pagesFetchedSoFar = 0) {
 }
 
 function fetchTopPostIds() {
-  console.log('posting ids');
   return fetch(
     'https://hacker-news.firebaseio.com/v0/topstories.json'
   ).then((res) => res.json());
+}
+
+export async function fetchPost(_, id) {
+  const response = await fetch(
+    `https://hacker-news.firebaseio.com/v0/item/${id}.json`
+  );
+  const post = await response.json();
+  return post;
 }
