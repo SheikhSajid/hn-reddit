@@ -30,7 +30,7 @@ export default memo(({ posts, fetchPosts }) => {
       }
     >
       {posts.map((post) => (
-        <PostEntry post={post} handleClick={handleClick} />
+        <PostEntry key={post.id} post={post} handleClick={handleClick} />
       ))}
     </InfiniteScroll>
   );
