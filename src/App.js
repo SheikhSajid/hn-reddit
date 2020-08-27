@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/post/:id" component={FullPost} />
+        <Route path="/hn-reddit/post/:id" component={FullPost} />
 
         <Route path="/">
           <PostList posts={posts} fetchPosts={fetchPosts} />

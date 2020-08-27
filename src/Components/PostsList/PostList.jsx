@@ -11,7 +11,7 @@ export default memo(({ posts, fetchPosts }) => {
 
   const handleClick = useCallback(
     (post) => {
-      history.push({ pathname: `/post/${post.id}`, state: { post } });
+      history.push({ pathname: `/hn-reddit/post/${post.id}`, state: { post } });
     },
     [history]
   );
