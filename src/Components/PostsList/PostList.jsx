@@ -22,7 +22,6 @@ export default memo(({ posts, fetchPosts }) => {
       next={fetchPosts}
       hasMore={posts.length <= 500}
       loader={<h4>Loading...</h4>}
-      style={{ width: '640px' }}
       endMessage={
         <p>
           <b>Yay! You have seen it all</b>

@@ -237,6 +237,10 @@ button {
   color: #979a9c;
 }
 
+.widget-content li {
+  margin-bottom: 10px;
+}
+
 .post-metadata {
   margin-bottom: 8px;
 }
@@ -327,6 +331,7 @@ button {
   position: relative;
   margin-bottom: 10px;
   border: 1px solid var(--border-color);
+  width: 100%;
 }
 
 .postlist-entry {
@@ -472,5 +477,15 @@ button {
 @media (min-width: 640px) {
   .container {
     padding: 20px 24px;
+  }
+}
+
+@media (max-width: 720px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    width: 100%;
   }
 }
