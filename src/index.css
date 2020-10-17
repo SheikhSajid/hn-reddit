@@ -213,11 +213,22 @@ button {
   padding: 0 20px;
   align-items: center;
   border-bottom: 1px solid var(--orange-accent);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 2;
 }
 
 .sidebar {
   width: 312px;
   margin-left: 24px;
+}
+
+.sidebar,
+.main {
+  position: relative;
+  top: 50px;
 }
 
 .post-metadata,
